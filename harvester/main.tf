@@ -17,5 +17,5 @@ resource "harvester_clusternetwork" "vlan" {
   }
   name                 = "vlan"
   enable               = true
-  default_physical_nic = "eth0"
+  default_physical_nic = "eno1"
 }
