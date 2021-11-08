@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "harvester" {
-  kubeconfig = "./kubeconfig.yaml"
+  kubeconfig = var.kubeconfig
 }
 
 resource "harvester_clusternetwork" "vlan" {
@@ -17,5 +17,5 @@ resource "harvester_clusternetwork" "vlan" {
   }
   name                 = "vlan"
   enable               = true
-  default_physical_nic = "eno1"
+  default_physical_nic = var.network_iface
 }
