@@ -15,7 +15,7 @@ resource "harvester_clusternetwork" "vlan" {
   lifecycle {
     prevent_destroy = true
   }
-  name                 = "vlan"
+  name                 = "vlan1"
   enable               = true
   default_physical_nic = var.network_iface
 }

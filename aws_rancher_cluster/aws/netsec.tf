@@ -27,6 +27,18 @@ resource "aws_security_group" "rancher_ingress" {
       ipv6_cidr_blocks = ["::/0"] 
     },
     {
+      description = "allow http"
+      from_port   = 80
+      to_port     = 80
+      protocol    = "tcp"
+      prefix_list_ids  = null
+      security_groups  = null
+      self             = null
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+
+    },
+    {
       description = "allow https"
       from_port   = 443
       to_port     = 443
@@ -38,16 +50,48 @@ resource "aws_security_group" "rancher_ingress" {
       ipv6_cidr_blocks = ["::/0"] 
     },
     {
-      description = "allow http"
-      from_port   = 80
-      to_port     = 80
+      description = "allow etcd ports"
+      from_port   = 2379
+      to_port     = 2379
       protocol    = "tcp"
       prefix_list_ids  = null
       security_groups  = null
       self             = null
       cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
-
+      ipv6_cidr_blocks = ["::/0"] 
+    },
+    {
+      description = "allow etcd ports"
+      from_port   = 2380
+      to_port     = 2380
+      protocol    = "tcp"
+      prefix_list_ids  = null
+      security_groups  = null
+      self             = null
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"] 
+    },
+    {
+      description = "allow kubeapi"
+      from_port   = 6443
+      to_port     = 6443
+      protocol    = "tcp"
+      prefix_list_ids  = null
+      security_groups  = null
+      self             = null
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"] 
+    },
+    {
+      description = "allow kube node registration"
+      from_port   = 9345
+      to_port     = 9345
+      protocol    = "tcp"
+      prefix_list_ids  = null
+      security_groups  = null
+      self             = null
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"] 
     },
   ]
   egress = [
